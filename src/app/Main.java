@@ -12,16 +12,17 @@ public class Main {
         /* Напишите программу, которая позволяет пользователю ввести список строк (например имена),
         и по завершение (например, если пользователь ввел "exit" сохраняет этот список в файл strings.txt */
         System.out.println("Вводите строки (для завершения введите 'exit'):");
-        Scanner scanner = new Scanner(System.in);
-        List<String> strings = new ArrayList<>();
-
-        // вводим данные в список
-        while (true) {
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("exit")) {
-                break;
+        List<String> strings;
+        strings = new ArrayList<>();
+        try (Scanner scanner = new Scanner(System.in)) {
+            // вводим данные в список
+            while (true) {
+                String input = scanner.nextLine();
+                if (input.equalsIgnoreCase("exit")) {
+                    break;
+                }
+                strings.add(input);
             }
-            strings.add(input);
         }
 
         // Записываем список в файл
